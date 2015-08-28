@@ -10,6 +10,12 @@
                     "alertTextCheckboxMultiple": "* Prosím vyberte jednu možnost",
                     "alertTextCheckboxe": "* Tato položka je povinná"
                 },
+                 "requiredInFunction": { 
+                    "func": function(field, rules, i, options){
+                        return (field.val() == "test") ? true : false;
+                    },
+                    "alertText": "* Pole se musí rovnat test"
+                },
                 "minSize": {
                     "regex": "none",
                     "alertText": "* Minimálně ",
@@ -19,6 +25,10 @@
                     "regex": "none",
                     "alertText": "* Maximálně ",
                     "alertText2": " znaky"
+                },
+				"groupRequired": {
+                    "regex": "none",
+                    "alertText": "* Musíte zadat jedno z nasledujících polí"
                 },
                 "min": {
                     "regex": "none",
@@ -30,11 +40,11 @@
                 },
                 "past": {
                     "regex": "none",
-                    "alertText": "* Date prior to "
+                    "alertText": "* Datum před "
                 },
                 "future": {
                     "regex": "none",
-                    "alertText": "* Date past "
+                    "alertText": "* Datum po "
                 },	
                 "maxCheckbox": {
                     "regex": "none",
@@ -49,6 +59,10 @@
                     "regex": "none",
                     "alertText": "* Pole se neshodují"
                 },
+                "creditCard": {
+                    "regex": "none",
+                    "alertText": "* Neplatné číslo kreditní karty"
+                },
                 "CZphone": {
                     // telefoní číslo
                     "regex": /^([\+][0-9]{1,3}[ \.\-])([0-9]{3}[\-][0-9]{3}[\-][0-9]{3})$/,
@@ -56,8 +70,8 @@
                 },
                 "phone": {
                     // credit: jquery.h5validate.js / orefalo
-                    "regex": /^([\+][0-9]{1,3}[ \.\-])?([\(]{1}[0-9]{2,6}[\)])?([0-9 \.\-\/]{3,20})((x|ext|extension)[ ]?[0-9]{1,4})?$/,
-                    "alertText": "* Invalid phone number"
+                    "regex": /^([\+][0-9]{1,3}([ \.\-])?)?([\(][0-9]{1,6}[\)])?([0-9 \.\-]{1,32})(([A-Za-z \:]{1,11})?[0-9]{1,4}?)$/,
+                    "alertText": "* Neplatné telefoní číslo"
                 },
                 "email": {
                     // Shamelessly lifted from Scott Gonzalez via the Bassistance Validation plugin http://projects.scottsplayground.com/email_address_validation/
@@ -70,7 +84,7 @@
                 },
                 "number": {
                     // Number, including positive, negative, and floating decimal. credit: orefalo
-                    "regex": /^[\-\+]?(([0-9]+)([\.,]([0-9]+))?|([\.,]([0-9]+))?)$/,
+                    "regex": /^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$/,
                     "alertText": "* Neplatné číslo"
                 },
                 "CZdate": {
@@ -107,6 +121,10 @@
                 },
                 "onlyLetterSp": {
                     "regex": /^[a-zA-Z\ \']+$/,
+                    "alertText": "* Pouze písmena"
+                },
+				"onlyLetterAccentSp":{
+                    "regex": /^[a-z\u00C0-\u017F\ ]+$/i,
                     "alertText": "* Pouze písmena"
                 },
                 "onlyLetterNumber": {
